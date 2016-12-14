@@ -5,3 +5,17 @@
   <h3>Instructions:</h3>
   <li> <%= @recipe.instructions %> </li>
 </ul>
+
+<h4>Update Details:</h4>
+<form action="/recipes/<%= @recipe.id %>/edit" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="new_name"><h5>Recipe Name:</h5></label>
+  <input type="text" id="new_name" name="new_name">
+
+  <label for="new_ingredients"><h5>Ingredients:</h5></label>
+  <input type="text" id="new_ingredients" name="new_ingredients">
+
+  <label for="new_instructions"><h5>Recipe Instructions:</h5></label>
+  <input type="text" id="new_instructions" name="new_instructions">
+  <button type="submit" class="btn black">Update Recipe</button>
+</form>

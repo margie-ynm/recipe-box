@@ -25,3 +25,12 @@ get('/recipes/:id') do
   @recipe = Recipe.find(params.fetch('id').to_i)
   erb :recipe
 end
+
+patch('/recipes/:id/edit') do
+  @recipe = Recipe.find(params.fetch('id').to_i)
+  name = params[:new_name]
+  ingredients = params[:new_ingredients]
+  instructions = params[:new_instructions]
+  @recipe.update({:name => name, :ingredients => ingredients, :instructions => instructions})
+  erb :recipe
+end
