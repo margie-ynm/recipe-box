@@ -11,3 +11,17 @@ end
 get('/recipes/new') do
   erb :recipe_form
 end
+
+post('/recipes/new') do
+  @recipes = Recipe.all()
+  name = params[:name]
+  ingredients = params[:ingredients]
+  instructions = params[:instructions]
+  Recipe.create({:name => name, :ingredients => ingredients, :instructions => instructions})
+  redirect '/'
+end
+
+get('/recipes/:id') do
+  @recipe = Recipe.find(params.fetch('id').to_i)
+  erb :recipe
+end
